@@ -93,15 +93,15 @@
             bottom: 0;
             background: rgba(45, 27, 105, 0.3);
         }
-        .promo-text {
+            .promo-text {
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             max-width: 500px;
         }
         .promo-text h2 {
-            font-size: 70px;
+            font-size: 42px;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 3px 3px 10px rgba(0,0,0,0.8);

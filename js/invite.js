@@ -103,7 +103,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
                 window.location.href = 'watch.html';
                 break;
             case 'Invite':
-                console.log('Already on Invite page');
+                window.location.href = 'invite.html';
                 break;
             case 'Chat':
                 window.location.href = 'chat.html';

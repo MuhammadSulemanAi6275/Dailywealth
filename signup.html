@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFlow Pro - Sign Up</title>
+    <title>Daily Wealth - Sign Up</title>
 <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">EcoFlow Pro</a>
+            <a href="index.html" class="logo">Daily Wealth</a>
             <div class="nav-buttons">
                 <a href="signin.html" class="btn btn-signin">Sign In</a>
                 <a href="signup.html" class="btn btn-signup">Sign Up</a>
@@ -103,7 +103,20 @@
 
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Sign up form submitted');
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (fullName && email && password.length >= 6) {
+                localStorage.setItem('user', JSON.stringify({
+                    name: fullName,
+                    email: email
+                }));
+                window.location.href = 'home.html';
+            } else {
+                alert('Please fill all fields correctly');
+            }
         });
     </script>
 </body>
