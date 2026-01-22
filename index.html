@@ -113,54 +113,186 @@
             max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .about h2 {
             font-size: 32px;
             color: #2d1b69;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
+            position: relative;
+        }
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border-radius: 2px;
         }
         .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             margin-top: 40px;
+            align-items: start;
         }
         .about-text {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #555;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .about-text p:first-child {
+            font-weight: 500;
+            color: #2d1b69;
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
         }
         .feature-card {
             background: rgba(17, 153, 142, 0.1);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(17, 153, 142, 0.2);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.2);
+            background: rgba(17, 153, 142, 0.15);
         }
         .feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #11998e, #38ef7d);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            flex-shrink: 0;
+        }
+        .feature-content {
+            flex: 1;
         }
         .feature-title {
             font-size: 18px;
             font-weight: bold;
             color: #2d1b69;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         .feature-desc {
             color: #666;
             font-size: 14px;
+            line-height: 1.5;
+        }
+        .testimonials {
+            background: white;
+            margin: 40px 20px;
+            padding: 60px 40px;
+            border-radius: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .testimonials h2 {
+            font-size: 32px;
+            color: #2d1b69;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        .testimonials h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border-radius: 2px;
+        }
+        .testimonials-slider {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        .testimonials-track {
+            display: flex;
+            animation: slideTestimonials 18s infinite;
+            width: 600%;
+        }
+        .testimonial-slide {
+            width: 16.666%;
+            flex-shrink: 0;
+            padding: 0 20px;
+        }
+        .testimonial-card {
+            background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(45, 27, 105, 0.3);
+        }
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+        }
+        .testimonial-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .testimonial-role {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 15px;
+        }
+        @keyframes slideTestimonials {
+            0% { transform: translateX(0); }
+            16.666% { transform: translateX(-16.666%); }
+            33.333% { transform: translateX(-33.333%); }
+            50% { transform: translateX(-50%); }
+            66.666% { transform: translateX(-66.666%); }
+            83.333% { transform: translateX(-83.333%); }
+            100% { transform: translateX(0); }
         }
         @media (max-width: 768px) {
             .hero-title {
@@ -176,6 +308,15 @@
             .about {
                 margin: 20px 15px;
                 padding: 40px 20px;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
             }
         }
     </style>
@@ -214,8 +355,10 @@
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                         </svg>
                     </div>
-                    <div class="feature-title">Lightning Fast</div>
-                    <div class="feature-desc">Optimized performance for maximum efficiency</div>
+                    <div class="feature-content">
+                        <div class="feature-title">Lightning Fast</div>
+                        <div class="feature-desc">Optimized performance for maximum efficiency</div>
+                    </div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -223,8 +366,10 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
-                    <div class="feature-title">Eco-Friendly</div>
-                    <div class="feature-desc">Sustainable solutions for a greener future</div>
+                    <div class="feature-content">
+                        <div class="feature-title">Eco-Friendly</div>
+                        <div class="feature-desc">Sustainable solutions for a greener future</div>
+                    </div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -232,11 +377,180 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
                     </div>
-                    <div class="feature-title">Reliable</div>
-                    <div class="feature-desc">99.9% uptime with enterprise-grade security</div>
+                    <div class="feature-content">
+                        <div class="feature-title">Reliable</div>
+                        <div class="feature-desc">99.9% uptime with enterprise-grade security</div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials-slider">
+            <div class="testimonials-track">
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Ahmed" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Daily Wealth transformed my financial journey. Amazing platform with reliable earnings!"</p>
+                        <div class="testimonial-name">Ahmed Khan</div>
+                        <div class="testimonial-role">Business Owner</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Consistent earnings every day. The withdrawal process is smooth and support is excellent!"</p>
+                        <div class="testimonial-name">Sarah Ali</div>
+                        <div class="testimonial-role">Freelancer</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Hassan" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Best platform for passive income! Simple to use and reliable payments. Highly recommend!"</p>
+                        <div class="testimonial-name">Muhammad Hassan</div>
+                        <div class="testimonial-role">Student</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Fatima" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Perfect for housewives like me. Easy to earn from home while managing family responsibilities."</p>
+                        <div class="testimonial-name">Fatima Sheikh</div>
+                        <div class="testimonial-role">Homemaker</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="Ali" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Great platform for extra income. The referral system works perfectly and payments are always on time."</p>
+                        <div class="testimonial-name">Ali Raza</div>
+                        <div class="testimonial-role">Teacher</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Zara" class="testimonial-avatar">
+                        <div class="stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Amazing experience! User-friendly interface and genuine earning opportunities. Totally worth it!"</p>
+                        <div class="testimonial-name">Zara Ahmed</div>
+                        <div class="testimonial-role">Designer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            
+     </div>
     </section>
 </body>
 </html>
